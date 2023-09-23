@@ -1,4 +1,4 @@
-**------------- bajar template de rocky linux en proxmox --------------**
+## bajar template de rocky linux en proxmox --------------**
 
 pveam list local
 
