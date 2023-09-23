@@ -109,7 +109,8 @@ se observan los pasos para su instalacion
 brew install k0sproject/tap/k0sctl
 
 Finalmente vamos desplegar k0s utilizando el archivo de configuracion k0sctl.yaml siguiente
-´´´
+
+/*
 apiVersion: k0sctl.k0sproject.io/v1beta1
 kind: Cluster
 metadata:
@@ -173,4 +174,5 @@ spec:
           type: etcd
         telemetry:
           enabled: true
-    ´´´
+    */
+    
