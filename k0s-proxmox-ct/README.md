@@ -33,12 +33,13 @@ En proxmox luego de creado el contenedor debemos ingresar a consola del proxmox 
 /etc/pve/lxc/<container_id>.conf
 
 agregando a lo que posee el archivo el contenido
-´´´
+
+```
 lxc.apparmor.profile: unconfined
 lxc.cgroup.devices.allow: a
 lxc.cap.drop:
 lxc.mount.auto: "proc:rw sys:rw"
-´´´
+```
 y modificando el valor de swap a valor 0 (cero)
 
 swap: 0
@@ -64,7 +65,7 @@ Estando dentro creamos al carpeta /dev/kmsg
 (Kubelet usa esto para algunas funciones de registro y no existe en los contenedores de forma predeterminada. )
 
 creamos el archivo /usr/local/bin/conf-kmsg.sh con el siguiente contenido
-´´´
+```
 .......................................
 #!/bin/sh -e
 if [ ! -e /dev/kmsg ]; then
@@ -72,9 +73,9 @@ if [ ! -e /dev/kmsg ]; then
 fi
 mount --make-rshared /
 .......................................
-´´´
+```
 luego creamos el archivo /etc/systemd/system/conf-kmsg.service con el contenido
-´´´
+```
 .......................................
 [Unit]
 Description=Make sure /dev/kmsg exists
@@ -86,7 +87,7 @@ TimeoutStartSec=0
 [Install]
 WantedBy=default.target
 .......................................
-´´´
+```
 Finalmente ejecutamos los comandos
 
 chmod +x /usr/local/bin/conf-kmsg.sh
@@ -109,7 +110,7 @@ se observan los pasos para su instalacion
 brew install k0sproject/tap/k0sctl
 
 Finalmente vamos desplegar k0s utilizando el archivo de configuracion k0sctl.yaml siguiente
-
+```
 /*
 apiVersion: k0sctl.k0sproject.io/v1beta1
 kind: Cluster
@@ -175,4 +176,4 @@ spec:
         telemetry:
           enabled: true
     */
-    
+```    
